@@ -33,4 +33,11 @@ export const signUserIn = async (
   next: NextFunction
 ) => {
   const errors = validationResult(req)
+  try {
+    if (!errors.isEmpty()) throw 'ValidationError'
+    const token = await userService.signUserIn(req.body)
+    res.status(200).json({ token })
+  } catch (err) {
+    next(userService.errorHandler(err, errors))
+  }
 }

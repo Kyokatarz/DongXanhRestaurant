@@ -13,7 +13,7 @@ import { createJwt } from '../util/jwtUtils'
 /*=============+
  |Register User|
  +=============*/
-export const registerUser = async (userObj: UserDocument) => {
+export const registerUser = async (userObj: UserDocument): Promise<string> => {
   const { username, password, lastName, firstName, isAdmin, email } = userObj
   const user = await User.findOne({ $or: [{ username }, { email }] }).exec()
   if (user) throw 'IdentificationDuplicated'
@@ -32,6 +32,23 @@ export const registerUser = async (userObj: UserDocument) => {
 
   await newUser.save()
   const token = createJwt({ id: newUser._id })
+  return token
+}
+
+/*============+
+ |Sign user in|
+ +============*/
+export const signUserIn = async (
+  userObj: Partial<UserDocument>
+): Promise<string> => {
+  const { username, password } = userObj
+  const user = await User.findOne({ username }).exec()
+  if (!user) throw 'CredentialError'
+
+  const pwdMatch = await bcrypt.compare(password, user.password)
+  if (!pwdMatch) throw 'CredentialError'
+
+  const token = createJwt({ id: user.id })
   return token
 }
 

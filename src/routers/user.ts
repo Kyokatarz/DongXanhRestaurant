@@ -15,4 +15,5 @@ router.post(
   validators.createUserValidator,
   userController.registerUser
 )
+router.post('/signin', validators.signInValidator, userController.signUserIn)
 export default router

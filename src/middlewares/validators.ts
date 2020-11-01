@@ -13,6 +13,11 @@ export const createUserValidator = [
   check('email', 'Please provide a valid email').isEmail(),
 ]
 
+export const signInValidator = [
+  check('username', 'Username must be provided').not().isEmpty(),
+  check('password', 'Password must be provided').not().isEmpty(),
+]
+
 const addProductValidator = [
   check('name', 'Name must be provided.').not().isEmpty(),
   check('category', 'Category must be provided.').not().isEmpty(),
