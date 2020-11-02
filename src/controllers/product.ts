@@ -67,3 +67,24 @@ export const editProduct = async (
     next(productService.errorHandler(err))
   }
 }
+
+/********************************************
+ * @ROUTE DELETE /v1/products/:productId    *
+ * @DESC Delete a product                   *
+ * @ACCESS ADMIN                            *
+ ********************************************/
+export const deleteProduct = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const product = await productService.deleteProduct(
+      req.params.productId,
+      (req.user as PayloadType)._id
+    )
+    res.status(200).json(product)
+  } catch (err) {
+    next(productService.errorHandler(err))
+  }
+}

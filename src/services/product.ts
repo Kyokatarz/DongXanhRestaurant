@@ -63,6 +63,22 @@ export const editProduct = async (
   return product
 }
 
+/*================+
+ |Delete a product|
+ +================*/
+export const deleteProduct = async (
+  productId: string,
+  userId: string
+): Promise<ProductDocument> => {
+  const user = await User.findById(userId)
+  if (!user) throw 'UserNotFound'
+  if (!user.isAdmin) throw 'NotAnAdmin'
+  console.log('here')
+  const product = await Product.findByIdAndDelete(productId)
+  if (!product) throw 'ProductNotFound'
+  return product
+}
+
 /*=============+
  |Error handler|
  +=============*/
