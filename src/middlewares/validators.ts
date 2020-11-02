@@ -1,5 +1,7 @@
 import { check } from 'express-validator'
 
+import auth from './auth'
+
 /*===============+
  |User validators|
  +===============*/
@@ -18,7 +20,11 @@ export const signInValidator = [
   check('password', 'Password must be provided').not().isEmpty(),
 ]
 
-const addProductValidator = [
+/*==================+
+ |Product validators|
+ +==================*/
+export const addProductValidatorWithAuth = [
+  auth,
   check('name', 'Name must be provided.').not().isEmpty(),
   check('category', 'Category must be provided.').not().isEmpty(),
   check('price', 'Price must be provided.').not().isEmpty(),

@@ -4,16 +4,15 @@ import jwt from 'jsonwebtoken'
 import { InternalServerError, UnauthorizedError } from '../helpers/apiError'
 import { JWT_SECRET } from '../util/secrets'
 
+export type PayloadType = {
+  _id: string
+}
+
 export type TokenType = {
   user: {
-    id: string
+    _id: string
   }
 }
-
-export type PayloadType = {
-  id: string
-}
-
 export default async (req: Request, res: Response, next: NextFunction) => {
   //Retrieve token:
   const token = req.header('x-auth-token')
@@ -23,6 +22,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     if (!token) throw 'NoToken'
 
     const decodedPayload = jwt.verify(token, JWT_SECRET) as TokenType
+
     req.user = decodedPayload.user // req.user now has user id
     next()
   } catch (err) {
