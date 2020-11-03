@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { Button } from 'semantic-ui-react'
 
 import LangContext from '../../context/LangContext'
-import { languages } from '../../lang/lang'
+import languages from '../../lang/lang'
 
 const HomePage = () => {
   const { lang, switchLang } = useContext(LangContext)
