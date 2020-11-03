@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Menu } from 'semantic-ui-react'
 
+import LangContext from '../../context/LangContext'
+import LanguageButton from '../LanguageButton'
+import languages from '../../lang/lang'
+
 const Navbar = () => {
+  const { lang } = useContext(LangContext)
+
   return (
-    <Menu>
-      <Menu.Item>Logo</Menu.Item>
-      <Menu.Item>Home</Menu.Item>
-      <Menu.Item>Menu</Menu.Item>
-      <Menu.Item>Contact Us</Menu.Item>
+    <Menu color="red">
+      <Menu.Item color="purple">Logo</Menu.Item>
+      <Menu.Item>{languages[lang].homepage}</Menu.Item>
+      <Menu.Item>{languages[lang].menu}</Menu.Item>
+      <Menu.Item>{languages[lang].contactUs}</Menu.Item>
+      <Menu.Item>
+        <LanguageButton />
+      </Menu.Item>
     </Menu>
   )
 }
