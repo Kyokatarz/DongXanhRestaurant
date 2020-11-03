@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 
 import Routes from './Routes'
 import LangContext, { LangContextObj, LangType } from './context/LangContext'
-import Navbar from './components/Navbar/Navbar'
+import Topbar from './components/Topbar'
+import './App.scss'
 
 export default function App() {
   const [langContext, setLangContext] = useState<LangContextObj>({
@@ -12,8 +13,10 @@ export default function App() {
   })
   return (
     <LangContext.Provider value={langContext}>
-      <Navbar />
-      <Routes />
+      <Topbar />
+      <div className="ContentContainer">
+        <Routes />
+      </div>
     </LangContext.Provider>
   )
 }
