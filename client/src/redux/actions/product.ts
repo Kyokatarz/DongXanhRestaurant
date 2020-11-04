@@ -1,37 +1,24 @@
 import { Dispatch } from 'redux'
+import axios from 'axios'
+import { url } from '../../App'
+import { Product, SET_PRODUCT } from '../../types'
 
-import {
-  ADD_PRODUCT,
-  REMOVE_PRODUCT,
-  ProductActions,
-  Product,
-} from '../../types'
-
-export function addProduct(product: Product): ProductActions {
+export const setProducts = (products: Product[]) => {
   return {
-    type: ADD_PRODUCT,
-    payload: {
-      product,
-    },
+    type: SET_PRODUCT,
+    payload: products,
   }
 }
 
-export function removeProduct(product: Product): ProductActions {
-  return {
-    type: REMOVE_PRODUCT,
-    payload: {
-      product,
-    },
-  }
-}
-
-// Async action processed by redux-thunk middleware
-export function fetchProduct(productId: string) {
-  return (dispatch: Dispatch) => {
-    return fetch(`products/${productId}`)
-      .then(resp => resp.json())
-      .then(product => {
-        dispatch(addProduct(product))
-      })
+//Redux thunk actions
+export const fetchProducts = () => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const resp = await axios.get(url + '/api/v1/products/all')
+      console.log(resp.data)
+      dispatch(setProducts(resp.data))
+    } catch (err) {
+      console.error(err)
+    }
   }
 }

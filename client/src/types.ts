@@ -1,61 +1,23 @@
-// Action types
-export const ADD_PRODUCT = 'ADD_PRODUCT'
-export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
-export const TOGGLE_DIALOG = 'TOGGLE_DIALOG'
-
-// Enum
-export enum DialogType {
-  SignIn = 'signIn',
-  SignUp = 'signUp',
-}
-
-// A product
+//A product
 export type Product = {
-  id: string
   name: string
   price: number
+  category: string[]
+  description?: string
 }
 
-export type AddProductAction = {
-  type: typeof ADD_PRODUCT
-  payload: {
-    product: Product,
-  }
+//Actions name
+export const FETCH_PRODUCT = 'FETCH_PRODUCT'
+export const SET_PRODUCT = 'SET_PRODUCT'
+
+//Actions:
+export type setProductAction = {
+  type: typeof SET_PRODUCT
+  payload: Product[]
 }
 
-export type RemoveProductAction = {
-  type: typeof REMOVE_PRODUCT
-  payload: {
-    product: Product,
-  }
-}
-
-export type ToggleDialogAction = {
-  type: typeof TOGGLE_DIALOG
-  payload: {
-    dialog: DialogType,
-  }
-}
-
-export type UiActions = ToggleDialogAction
-
-// Use this union in reducer
-export type ProductActions =
-  | AddProductAction
-  | RemoveProductAction
-
-export type ProductState = {
-  inCart: Product[]
-}
-
-// Using dynamic keys from an enum
-export type UiState = {
-  dialogOpen: {
-    [key in DialogType]?: boolean
-  }
-}
+export type ProductAction = setProductAction
 
 export type AppState = {
-  product: ProductState,
-  ui: UiState,
+  products: Product[]
 }

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import Button from 'react-bootstrap/Button'
+import { GrGlobe } from 'react-icons/gr'
 import Dropdown from 'react-bootstrap/Dropdown'
 
 import LangContext from '../../context/LangContext'
@@ -9,7 +9,9 @@ const LanguageButton = () => {
 
   return (
     <Dropdown>
-      <Dropdown.Toggle>GlobeIcon</Dropdown.Toggle>
+      <Dropdown.Toggle variant="primary">
+        <GrGlobe />
+      </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item onClick={() => switchLang('vi')}>
           Tiếng Việt

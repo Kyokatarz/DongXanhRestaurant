@@ -1,7 +1,23 @@
+@import '../../scss//global.scss';
+
 .navbar.Topbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 999;
+  border-bottom: 2px solid $primary;
+}
+
+.navbar-nav.Navbar__Link {
+  width: 40%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .navbar-nav.Navbar__Link {
+    width: 80%;
+  }
 }
