@@ -1,7 +1,10 @@
 @import './scss/global.scss';
 
 section {
+  padding: 10px;
+  padding-top: 56px;
   min-height: calc(100vh);
   height: auto;
   background-color: $background-color;
+  color: white;
 }
