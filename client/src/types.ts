@@ -1,6 +1,5 @@
 //A product
 export type Product = {
-  _id: string
   name: string
   price: number
   category: string[]
