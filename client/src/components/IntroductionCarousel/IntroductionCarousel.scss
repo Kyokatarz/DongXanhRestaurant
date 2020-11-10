@@ -1,12 +1,12 @@
 .carousel.IntroductionCarousel {
   width: 70%;
   height: 50%;
-}
 
-img {
-  display: block;
-  width: 100%;
-  max-height: 70vh;
+  & img {
+    display: block;
+    width: 100%;
+    max-height: 70vh;
+  }
 }
 @media (max-width: 876px) {
   .carousel.IntroductionCarousel {
@@ -17,9 +17,9 @@ img {
     height: 70vh !important;
     display: flex;
     align-items: center;
-  }
 
-  img {
-    height: 100%;
+    & img {
+      height: 100%;
+    }
   }
 }
