@@ -8,7 +8,7 @@ import {
   makeStyles,
   Theme,
 } from '@material-ui/core'
-import { Home, RestaurantMenu, Phone } from '@material-ui/icons'
+import { Home, RestaurantMenu, Phone, Close } from '@material-ui/icons'
 
 type NavDrawerProps = {
   open: boolean
@@ -38,7 +38,14 @@ const NavDrawer: React.FC<NavDrawerProps> = ({ open, setNavDrawer }) => {
       open={open}
       onClose={() => setNavDrawer((prev: any) => !prev)}
     >
-      <List component="nav" className={classes.drawer}>
+      <List
+        component="nav"
+        className={classes.drawer}
+        onClick={() => setNavDrawer((prev: any) => !prev)}
+      >
+        <ListItem button alignItems="center">
+          <Close className={classes.icon} />
+        </ListItem>
         <ListItem button alignItems="center">
           <Home className={classes.icon} />
           <ListItemText>Home</ListItemText>

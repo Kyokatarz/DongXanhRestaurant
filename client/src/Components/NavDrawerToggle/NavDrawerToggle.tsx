@@ -1,5 +1,5 @@
 import React from 'react'
-import { List } from '@material-ui/icons'
+import { Menu } from '@material-ui/icons'
 import { IconButton } from '@material-ui/core'
 
 type DrawerToggleProps = {
@@ -9,7 +9,7 @@ type DrawerToggleProps = {
 const NavDrawerToggle: React.FC<DrawerToggleProps> = ({ setNavDrawer }) => {
   return (
     <IconButton>
-      <List onClick={() => setNavDrawer((prev) => !prev)} fontSize="large" />
+      <Menu onClick={() => setNavDrawer((prev) => !prev)} fontSize="large" />
     </IconButton>
   )
 }
