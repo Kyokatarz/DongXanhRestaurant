@@ -1,30 +1,22 @@
 import React from 'react'
 import {
-  Button,
   createMuiTheme,
   ThemeProvider,
-  Card,
-  Typography,
   CssBaseline,
-  withStyles,
-  AppBar,
-  Toolbar,
+  ThemeOptions,
 } from '@material-ui/core'
 
-const theme = createMuiTheme({
-  palette: {
-    type: 'dark',
-    primary: {
-      main: '#C22828',
-    },
-  },
-})
+import customTheme from '../theme'
+import Navbar from '../Components/Navbar/Navbar'
+
+const theme = createMuiTheme(customTheme)
 
 export default function Home() {
   return (
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <Navbar />
       </ThemeProvider>
     </>
   )
