@@ -7,17 +7,10 @@ import {
 } from '@material-ui/core'
 
 import customTheme from '../theme'
-import Navbar from '../Components/Navbar/Navbar'
+import HomePage from '../Components/HomePage'
 
 const theme = createMuiTheme(customTheme)
 
 export default function Home() {
-  return (
-    <>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Navbar />
-      </ThemeProvider>
-    </>
-  )
+  return <HomePage />
 }

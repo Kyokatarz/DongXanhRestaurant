@@ -6,6 +6,9 @@ const customTheme: ThemeOptions = {
     primary: {
       main: '#C22828',
     },
+    secondary: {
+      main: '#5FDEDE',
+    },
     background: {
       default: '#121212',
     },

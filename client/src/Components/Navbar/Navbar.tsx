@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {
   AppBar,
   createStyles,
+  Hidden,
   makeStyles,
   Theme,
   Toolbar,
@@ -14,7 +15,9 @@ import NavDrawer from '../NavDrawer'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      height: 60,
+      backgroundColor: '#121212',
+    },
+    toolBar: {
       backgroundColor: 'rgba(255, 255, 255, 0.12)',
       borderBottom: '4px solid #C22828',
     },
@@ -27,7 +30,7 @@ const Navbar = () => {
   const [navDrawer, setNavDrawer] = useState(false)
   return (
     <AppBar className={classes.root}>
-      <Toolbar>
+      <Toolbar className={classes.toolBar}>
         <NavDrawerToggle setNavDrawer={setNavDrawer} />
         <NavDrawer open={navDrawer} setNavDrawer={setNavDrawer} />
         <NavbarLink />

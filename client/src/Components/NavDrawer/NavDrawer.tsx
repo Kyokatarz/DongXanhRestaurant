@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   createStyles,
+  Divider,
   Drawer,
   List,
   ListItem,
@@ -46,6 +47,7 @@ const NavDrawer: React.FC<NavDrawerProps> = ({ open, setNavDrawer }) => {
         <ListItem button alignItems="center">
           <Close className={classes.icon} />
         </ListItem>
+        <Divider />
         <ListItem button alignItems="center">
           <Home className={classes.icon} />
           <ListItemText>Home</ListItemText>
