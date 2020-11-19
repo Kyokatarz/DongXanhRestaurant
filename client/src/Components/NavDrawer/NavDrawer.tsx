@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const NavDrawer: React.FC<NavDrawerProps> = ({ open, setNavDrawer }) => {
   const classes = useStyles()
-  const list = ['Home', 'Menu', 'Contact Us']
 
   return (
     <Drawer

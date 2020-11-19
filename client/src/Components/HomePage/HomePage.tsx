@@ -8,9 +8,9 @@ import {
   Theme,
   Typography,
 } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 import DailyFeatured from '../DailyFeatured/DailyFeatured'
 import SmallImageContainer from '../SmallImageContainer'
-import SmallCard from '../SmallCard'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -71,9 +71,11 @@ const HomePage = () => {
         </Grid>
 
         <Container className={classes.buttonContainer}>
-          <Button variant="contained" color="primary" size="large">
-            Go To Menu {'>'}
-          </Button>
+          <Link to="/menu">
+            <Button variant="contained" color="primary" size="large">
+              Go To Menu {'>'}
+            </Button>
+          </Link>
         </Container>
       </Grid>
     </Container>

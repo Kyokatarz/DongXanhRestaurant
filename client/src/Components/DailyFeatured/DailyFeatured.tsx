@@ -1,12 +1,5 @@
 import React, { useState } from 'react'
-import {
-  CardMedia,
-  Container,
-  createStyles,
-  makeStyles,
-  Paper,
-  Theme,
-} from '@material-ui/core'
+import { createStyles, makeStyles, Theme } from '@material-ui/core'
 import InfoIcon from '@material-ui/icons/Info'
 import CancelIcon from '@material-ui/icons/Cancel'
 
@@ -40,7 +33,11 @@ const DailyFeatured = () => {
   const [showOverlay, setShowOverlay] = useState(false)
   return (
     <div className={classes.imageContainer}>
-      <img src="http://via.placeholder.com/400x400" className={classes.image} />
+      <img
+        src="http://via.placeholder.com/400x400"
+        className={classes.image}
+        alt=""
+      />
       {!showOverlay && (
         <InfoIcon
           className={classes.showOverlayIcon}

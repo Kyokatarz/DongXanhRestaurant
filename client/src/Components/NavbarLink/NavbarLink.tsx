@@ -1,7 +1,25 @@
-import { Grid, Hidden, Typography } from '@material-ui/core'
+import {
+  Grid,
+  Hidden,
+  Typography,
+  makeStyles,
+  createStyles,
+  Theme,
+} from '@material-ui/core'
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    links: {
+      color: 'inherit',
+      textDecoration: 'none',
+    },
+  })
+)
 
 const NavbarLink = () => {
+  const classes = useStyles()
   return (
     <Hidden xsDown>
       <Grid
@@ -12,13 +30,19 @@ const NavbarLink = () => {
         alignItems="center"
       >
         <Grid item sm={2} xs={3}>
-          <Typography component="body">Home</Typography>
+          <Link to="/" className={classes.links}>
+            <Typography variant="body1">Home</Typography>
+          </Link>
         </Grid>
         <Grid item sm={2} xs={3}>
-          <Typography component="body">Menu</Typography>
+          <Link to="/menu" className={classes.links}>
+            <Typography variant="body1">Menu</Typography>
+          </Link>
         </Grid>
         <Grid item sm={2} xs={3}>
-          <Typography component="body">Contact Us</Typography>
+          <Link to="/contact" className={classes.links}>
+            <Typography variant="body1">Contact Us</Typography>
+          </Link>
         </Grid>
       </Grid>
     </Hidden>
