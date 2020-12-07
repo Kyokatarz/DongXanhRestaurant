@@ -45,10 +45,6 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       justifyContent: 'flex-end',
     },
-    link: {
-      color: 'inherit',
-      textDecoration: 'none',
-    },
   })
 )
 
@@ -75,7 +71,7 @@ const HomePage = () => {
         </Grid>
 
         <Container className={classes.buttonContainer}>
-          <Link to="/menu" className={classes.link}>
+          <Link to="/menu">
             <Button variant="contained" color="primary" size="large">
               Go To Menu {'>'}
             </Button>

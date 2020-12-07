@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '100%',
     },
     imgContainer: {
-      width: '70vw',
+      width: '80vw',
       height: '30vh',
       marginTop: 20,
       display: 'flex',
