@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
       maxWidth: '100%',
       maxHeight: '100%',
       zIndex: 2,
+      objectFit: 'cover',
     },
     showOverlayIcon: {
       position: 'absolute',

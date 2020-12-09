@@ -6,16 +6,16 @@ import {
   Theme,
 } from '@material-ui/core'
 import React from 'react'
+
 import ProductRight from '../ProductRight'
-import ProductLeft from '../ProductLeft'
+import ProductSearchBar from '../ProductSearchBar'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     innerContainer: {
       border: '1px solid blue',
       marginTop: 10,
-      padding: 0,
-      paddingTop: 5,
+      padding: theme.spacing(2),
     },
   })
 )
@@ -25,11 +25,11 @@ const ProductContainer = () => {
   return (
     <Container className={classes.innerContainer}>
       <Grid container spacing={1} direction="row">
-        <Grid item xs={12} lg={4}>
-          <ProductLeft />
+        <Grid item xs={12} md={4} lg={3}>
+          <ProductSearchBar />
         </Grid>
 
-        <Grid item xs={12} lg={8}>
+        <Grid item xs={12} md={8} lg={9}>
           <ProductRight />
         </Grid>
       </Grid>

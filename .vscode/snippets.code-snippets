@@ -16,7 +16,7 @@
 	// 	"description": "Log output to console"
 	// }
 	"useStyles Material UI": {
-		"prefix": "useStyles",
+		"prefix": "snip-styles",
 		"body": [
 			"const useStyles = makeStyles((theme: Theme) => ",
 			"\tcreateStyles({ $1",
