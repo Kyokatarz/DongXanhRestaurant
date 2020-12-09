@@ -1,12 +1,12 @@
 import mongoose, { Document } from 'mongoose'
 
 export type UserDocument = Document & {
-  username: string
-  password: string
-  email: string
-  firstName?: string
-  lastName?: string
-  isAdmin: boolean
+  username: string;
+  password: string;
+  email: string;
+  firstName?: string;
+  lastName?: string;
+  isAdmin: boolean;
 }
 
 const UserSchema = new mongoose.Schema({

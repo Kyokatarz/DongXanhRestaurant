@@ -5,13 +5,13 @@ import { InternalServerError, UnauthorizedError } from '../helpers/apiError'
 import { JWT_SECRET } from '../util/secrets'
 
 export type PayloadType = {
-  _id: string
+  _id: string;
 }
 
 export type TokenType = {
   user: {
-    _id: string
-  }
+    _id: string;
+  };
 }
 export default async (req: Request, res: Response, next: NextFunction) => {
   //Retrieve token:
