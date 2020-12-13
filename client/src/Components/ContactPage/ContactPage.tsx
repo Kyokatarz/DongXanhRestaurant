@@ -8,6 +8,7 @@ import {
 import React from 'react'
 
 import Address from '../Address'
+import Map from '../Map'
 import OpeningHours from '../OpeningHours'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -21,13 +22,22 @@ const useStyles = makeStyles((theme: Theme) =>
       minHeight: '90vh',
       padding: theme.spacing(4),
     },
+    title: {
+      marginBottom: theme.spacing(2),
+      color: theme.palette.primary.light,
+    },
   })
 )
 const ContactPage = () => {
   const classes = useStyles()
   return (
     <div className={classes.container}>
-      <Typography component="h1" variant="h3" align="center">
+      <Typography
+        component="h1"
+        variant="h3"
+        align="center"
+        className={classes.title}
+      >
         Contact Us
       </Typography>
       <Grid container spacing={1} justify="center">
@@ -35,8 +45,14 @@ const ContactPage = () => {
           <OpeningHours />
         </Grid>
         <Grid item md={4} xs={12}>
-          <Address />
-          <div>2</div>
+          <Grid container direction="column">
+            <Grid item md={12}>
+              <Address />
+            </Grid>
+            <Grid item md={12}>
+              <Map />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </div>

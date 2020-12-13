@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       paddingBottom: theme.spacing(2),
+      color: theme.palette.primary.light,
     },
   })
 )
@@ -30,34 +31,34 @@ const Address = () => {
   const classes = useStyles()
   return (
     <Card className={classes.container}>
-      <Typography variant="h5" component="h2" className={classes.title}>
+      <Typography variant="h4" component="h2" className={classes.title}>
         Address
       </Typography>
       <Grid container>
-        <Grid item md={1}>
+        <Grid item xs={1}>
           <HouseIcon />
         </Grid>
-        <Grid item md={9}>
+        <Grid item xs={9}>
           <Typography variant="body2" component="p">
             368 Dong Den Str. Tan Binh District Ho Chi Minh City
           </Typography>
         </Grid>
       </Grid>
       <Grid container>
-        <Grid item md={1}>
+        <Grid item xs={1}>
           <PhoneIcon />
         </Grid>
-        <Grid item md={9}>
+        <Grid item xs={9}>
           <Typography variant="body2" component="p">
             Phone number
           </Typography>
         </Grid>
       </Grid>
       <Grid container>
-        <Grid item md={1}>
+        <Grid item xs={1}>
           <FacebookIcon />
         </Grid>
-        <Grid item md={9}>
+        <Grid item xs={9}>
           <Typography variant="body2" component="p">
             Address address address
           </Typography>
