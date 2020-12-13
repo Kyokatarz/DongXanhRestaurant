@@ -1,4 +1,5 @@
 import { Dispatch } from 'redux'
+import axios from 'axios'
 
 import {
   ADD_PRODUCT,
@@ -6,12 +7,13 @@ import {
   ProductActions,
   Product,
 } from '../../types'
+import { host } from '../../App'
 
-export function addProduct(product: Product): ProductActions {
+export function addAllProducts(products: Product[]): ProductActions {
   return {
     type: ADD_PRODUCT,
     payload: {
-      product,
+      products,
     },
   }
 }
@@ -26,12 +28,11 @@ export function removeProduct(product: Product): ProductActions {
 }
 
 // Async action processed by redux-thunk middleware
-export function fetchProduct(productId: string) {
-  return (dispatch: Dispatch) => {
-    return fetch(`products/${productId}`)
-      .then(resp => resp.json())
-      .then(product => {
-        dispatch(addProduct(product))
-      })
+
+export function fetchAllProducts() {
+  return async (dispatch: Dispatch) => {
+    const resp = await axios.get(host + '/api/v1/products/all')
+    console.log(resp)
+    dispatch(addAllProducts(resp.data))
   }
 }

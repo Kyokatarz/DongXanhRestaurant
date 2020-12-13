@@ -44,14 +44,16 @@ const useStyles = makeStyles((theme: Theme) =>
     container: {
       padding: theme.spacing(3),
       minHeight: '50vh',
+      height: '100%',
       display: 'flex',
       flexDirection: 'column',
-      justifyContainer: 'center',
       alignItems: 'center',
     },
     title: {
       color: theme.palette.primary.light,
+      paddingBottom: theme.spacing(2),
     },
+
     date: {
       display: 'flex',
       justifyContent: 'space-between',
@@ -72,7 +74,7 @@ const OpeningHours = () => {
 
       <Grid container direction="column">
         {openHours.map((obj) => (
-          <Grid item className={classes.date}>
+          <Grid item className={classes.date} key={obj.date}>
             <Typography variant="h6" component="p">
               {obj.date}
             </Typography>

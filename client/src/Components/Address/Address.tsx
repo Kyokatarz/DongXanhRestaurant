@@ -14,6 +14,7 @@ import FacebookIcon from '@material-ui/icons/Facebook'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
+      height: '100%',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -23,6 +24,10 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       paddingBottom: theme.spacing(2),
       color: theme.palette.primary.light,
+    },
+    items: {
+      paddingBottom: theme.spacing(1),
+      paddingTop: theme.spacing(1),
     },
   })
 )
@@ -34,8 +39,8 @@ const Address = () => {
       <Typography variant="h4" component="h2" className={classes.title}>
         Address
       </Typography>
-      <Grid container>
-        <Grid item xs={1}>
+      <Grid container className={classes.items}>
+        <Grid item xs={2}>
           <HouseIcon />
         </Grid>
         <Grid item xs={9}>
@@ -44,8 +49,8 @@ const Address = () => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container>
-        <Grid item xs={1}>
+      <Grid container className={classes.items}>
+        <Grid item xs={2}>
           <PhoneIcon />
         </Grid>
         <Grid item xs={9}>
@@ -54,8 +59,8 @@ const Address = () => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container>
-        <Grid item xs={1}>
+      <Grid container className={classes.items}>
+        <Grid item xs={2}>
           <FacebookIcon />
         </Grid>
         <Grid item xs={9}>

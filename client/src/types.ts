@@ -10,42 +10,43 @@ export enum DialogType {
 }
 
 // A product
+export type Category = 'pork' | 'fish' | 'beef'
 export type Product = {
-  id: string
+  _id: string
   name: string
   price: number
+  category: Category[]
+  description: string
 }
 
-export type AddProductAction = {
+export type AddAllProductsAction = {
   type: typeof ADD_PRODUCT
   payload: {
-    product: Product,
+    products: Product[]
   }
 }
 
 export type RemoveProductAction = {
   type: typeof REMOVE_PRODUCT
   payload: {
-    product: Product,
+    product: Product
   }
 }
 
 export type ToggleDialogAction = {
   type: typeof TOGGLE_DIALOG
   payload: {
-    dialog: DialogType,
+    dialog: DialogType
   }
 }
 
 export type UiActions = ToggleDialogAction
 
 // Use this union in reducer
-export type ProductActions =
-  | AddProductAction
-  | RemoveProductAction
+export type ProductActions = AddAllProductsAction | RemoveProductAction
 
 export type ProductState = {
-  inCart: Product[]
+  allProducts: Product[]
 }
 
 // Using dynamic keys from an enum
@@ -55,7 +56,7 @@ export type UiState = {
   }
 }
 
-export type AppState = {
-  product: ProductState,
-  ui: UiState,
+export type RootState = {
+  product: ProductState
+  ui: UiState
 }

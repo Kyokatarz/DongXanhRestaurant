@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core'
 import React from 'react'
 
-import ProductRight from '../ProductRight'
+import ProductShowCase from '../ProductShowCase'
 import ProductSearchBar from '../ProductSearchBar'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -30,7 +30,7 @@ const ProductContainer = () => {
         </Grid>
 
         <Grid item xs={12} md={8} lg={9}>
-          <ProductRight />
+          <ProductShowCase />
         </Grid>
       </Grid>
     </Container>

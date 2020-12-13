@@ -9,8 +9,8 @@ type DrawerToggleProps = {
 const NavDrawerToggle: React.FC<DrawerToggleProps> = ({ setNavDrawer }) => {
   return (
     <Hidden smUp>
-      <IconButton>
-        <Menu onClick={() => setNavDrawer((prev) => !prev)} fontSize="large" />
+      <IconButton onClick={() => setNavDrawer((prev) => !prev)}>
+        <Menu fontSize="large" />
       </IconButton>
     </Hidden>
   )
