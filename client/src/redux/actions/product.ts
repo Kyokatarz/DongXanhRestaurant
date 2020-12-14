@@ -6,6 +6,7 @@ import {
   REMOVE_PRODUCT,
   ProductActions,
   Product,
+  SET_FILTERED_PRODUCT,
 } from '../../types'
 import { host } from '../../App'
 
@@ -14,6 +15,15 @@ export function addAllProducts(products: Product[]): ProductActions {
     type: ADD_PRODUCT,
     payload: {
       products,
+    },
+  }
+}
+
+export function setFilteredProducts(products: Product[]): ProductActions {
+  return {
+    type: SET_FILTERED_PRODUCT,
+    payload: {
+      filteredProducts: products,
     },
   }
 }
@@ -34,5 +44,6 @@ export function fetchAllProducts() {
     const resp = await axios.get(host + '/api/v1/products/all')
     console.log(resp)
     dispatch(addAllProducts(resp.data))
+    dispatch(setFilteredProducts(resp.data))
   }
 }

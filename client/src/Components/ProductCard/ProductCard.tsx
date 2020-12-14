@@ -12,6 +12,9 @@ import {
   Theme,
   Typography,
 } from '@material-ui/core'
+import lodash from 'lodash'
+
+import { Product } from '../../types'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,7 +28,15 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-const ProductCard = () => {
+const ProductCard: React.FC<Product> = ({
+  name,
+  price,
+  category,
+  description,
+}) => {
+  const categoryString = category
+    .map((string) => lodash.capitalize(string))
+    .join(', ')
   const classes = useStyles()
   return (
     <Grid item md={10} lg={5}>
@@ -37,17 +48,21 @@ const ProductCard = () => {
           />
           <CardContent>
             <Typography variant="h5" component="h2">
-              Dish Name
+              {name}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              description description description description description
-              description description description description description
+
+            <Typography variant="subtitle1" component="p">
+              {categoryString}
+            </Typography>
+
+            <Typography variant="body1" color="textSecondary" component="p">
+              {description}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions className={classes.buttonContainer}>
-          <Button size="small" color="primary">
-            Add to cart
+          <Button size="small" color="secondary">
+            {price}
           </Button>
         </CardActions>
       </Card>

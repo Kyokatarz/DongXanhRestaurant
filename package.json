@@ -11,7 +11,7 @@
   "scripts": {
     "start": "npm run serve",
     "client": "cd client && npm start",
-    "build": "npm run build-sass && npm run build-ts && npm run lint && npm run copy-static-assets",
+    "build": "npm run build-ts && npm run lint && npm run copy-static-assets",
     "serve": "node dist/server.js",
     "watch-node": "nodemon dist/server.js",
     "watch": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
@@ -52,7 +52,7 @@
     "husky": "^4.2.3",
     "jsonwebtoken": "^8.5.1",
     "lint-staged": "^10.0.8",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
     "lusca": "^1.6.1",
     "mongodb-memory-server": "^6.3.1",
     "mongoose": "^5.9.2",

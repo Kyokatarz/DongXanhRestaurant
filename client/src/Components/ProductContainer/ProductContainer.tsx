@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const ProductContainer = () => {
   const classes = useStyles()
+
   return (
     <Container className={classes.innerContainer}>
       <Grid container spacing={1} direction="row">
