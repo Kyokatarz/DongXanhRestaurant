@@ -1,11 +1,19 @@
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import { createStyles, Grid, makeStyles, Theme } from '@material-ui/core'
 import { Pagination } from '@material-ui/lab'
 import { useSelector } from 'react-redux'
-import lodash from 'lodash'
 
 import ProductCard from '../ProductCard'
-import { Product, RootState } from '../../types'
+import { Category, Product, RootState } from '../../types'
+import useCategoryFilter from '../../hooks/useCategoryFilter'
+import useSearch from '../../hooks/useSearch'
+
+type Props = {
+  searchValue: string
+  categoryCheck: {
+    [key: string]: boolean
+  }
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,19 +28,31 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-const ProductShowCase = () => {
+const ProductShowCase: React.FC<Props> = ({ searchValue, categoryCheck }) => {
   const classes = useStyles()
-  const filteredProducts = useSelector<RootState, Product[]>(
-    (state) => state.product.filteredProducts
+  const allProducts = useSelector<RootState, Product[]>(
+    (state) => state.product.allProducts
   )
-  const [activePage, setActivePage] = useState(1)
-  const chunks = lodash.chunk(filteredProducts, 2)
-  const activeChunk = chunks[activePage - 1]
+  const [activePage, setActivePage] = useState(0)
+
+  let checkedArray: Category[] = []
+  Object.keys(categoryCheck).forEach((key) =>
+    categoryCheck[key] === true ? checkedArray.push(key as Category) : null
+  )
+
+  const searchFiltered = useSearch(allProducts, searchValue)
+  const chunks = useCategoryFilter(searchFiltered, checkedArray)
+  const activeChunk = chunks[activePage]
   const totalPage = chunks.length
 
   const pageChangeHandler = (_: ChangeEvent<unknown>, value: number) => {
-    setActivePage(value)
+    setActivePage(value - 1)
   }
+
+  useEffect(() => {
+    console.log('Showcase rerendered!')
+    console.log('chunks', chunks)
+  })
 
   return (
     <div className={classes.container}>
