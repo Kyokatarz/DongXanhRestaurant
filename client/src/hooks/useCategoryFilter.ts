@@ -7,7 +7,6 @@ export default function (sourceArray: Product[], categoryArray: Category[]) {
   const categoryFiltered = sourceArray.filter((object) =>
     categoryArray.some((elem) => object.category.includes(elem))
   )
-  console.log('categoryFiltered', categoryFiltered)
   return categoryArray.length > 0
     ? lodash.chunk(categoryFiltered, numberOfChunks)
     : lodash.chunk(sourceArray, numberOfChunks)

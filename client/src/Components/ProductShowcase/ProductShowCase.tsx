@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import { createStyles, Grid, makeStyles, Theme } from '@material-ui/core'
 import { Pagination } from '@material-ui/lab'
 import { useSelector } from 'react-redux'
@@ -48,11 +48,6 @@ const ProductShowCase: React.FC<Props> = ({ searchValue, categoryCheck }) => {
   const pageChangeHandler = (_: ChangeEvent<unknown>, value: number) => {
     setActivePage(value - 1)
   }
-
-  useEffect(() => {
-    console.log('Showcase rerendered!')
-    console.log('chunks', chunks)
-  })
 
   return (
     <div className={classes.container}>
