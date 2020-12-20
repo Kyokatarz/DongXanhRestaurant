@@ -27,19 +27,19 @@ const SmallImageContainer = () => {
     <Container className={classes.container}>
       <Grid container>
         <Grid container spacing={1} className={classes.row}>
-          <Grid item>
+          <Grid item xs={12} sm={6}>
             <SmallCard />
           </Grid>
-          <Grid item>
+          <Grid item xs={12} sm={6}>
             <SmallCard />
           </Grid>
         </Grid>
       </Grid>
       <Grid container spacing={1} className={classes.row}>
-        <Grid item>
+        <Grid item xs={12} sm={6}>
           <SmallCard />
         </Grid>
-        <Grid item>
+        <Grid item xs={12} sm={6}>
           <SmallCard />
         </Grid>
       </Grid>

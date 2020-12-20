@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme: Theme) =>
       maxWidth: 'none',
       marginTop: 65,
       borderWidth: 1,
-      border: '1px solid white',
       display: 'flex',
       flexDirection: 'column',
       minHeight: 'calc(100vh - 70px)',

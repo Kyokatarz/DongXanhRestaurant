@@ -8,7 +8,9 @@ import Routes from './Routes'
 import customTheme from './theme'
 
 export const host =
-  process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : null //TODO: Add backend URL when deploy
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : process.env['SERVER_URL'] //TODO: Add backend URL when deploy
 
 const theme = createMuiTheme(customTheme)
 

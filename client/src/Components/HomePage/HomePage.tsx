@@ -9,15 +9,14 @@ import {
   Typography,
 } from '@material-ui/core'
 import { Link } from 'react-router-dom'
-import DailyFeatured from '../DailyFeatured/DailyFeatured'
 import SmallImageContainer from '../SmallImageContainer'
+import SmallCard from '../SmallCard'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     bodyWrapper: {
       marginTop: 65,
       borderWidth: 1,
-      border: '1px solid white',
       display: 'flex',
       minHeight: 'calc(100vh - 70px)',
       justifyContent: 'center',
@@ -33,6 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     header: {
       color: theme.palette.primary.light,
+      marginBottom: theme.spacing(2),
     },
     innerWrapper: {
       justifyContent: 'center',
@@ -64,11 +64,11 @@ const HomePage = () => {
         </Grid>
 
         <Grid item>
-          <Grid container className={classes.innerWrapper}>
-            <Grid item>
-              <DailyFeatured />
+          <Grid container className={classes.innerWrapper} spacing={1}>
+            <Grid item xs={12}>
+              <SmallCard />
             </Grid>
-            <Grid item>
+            <Grid item xs={12}>
               <SmallImageContainer />
             </Grid>
           </Grid>

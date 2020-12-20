@@ -12,11 +12,13 @@ const useStyles = makeStyles((theme: Theme) =>
     image: {
       display: 'block',
       height: 230,
-      width: 230,
+      width: '100%',
       maxWidth: '100%',
       maxHeight: '100%',
       zIndex: 2,
       objectFit: 'cover',
+      opacity: '0.8',
+      borderRadius: 7,
     },
     showOverlayIcon: {
       position: 'absolute',
@@ -34,7 +36,7 @@ const SmallCard = () => {
   return (
     <div className={classes.imageContainer}>
       <img
-        src="http://via.placeholder.com/240x240"
+        src="/Assets/BaChiHeoNuongRiengMe.jpg"
         className={classes.image}
         alt=""
       />

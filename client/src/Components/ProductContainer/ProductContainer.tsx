@@ -13,9 +13,10 @@ import ProductSearchBar from '../ProductSearchBar'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     innerContainer: {
-      border: '1px solid blue',
+      border: `1px solid ${theme.palette.primary.light}`,
       marginTop: 10,
       padding: theme.spacing(2),
+      borderRadius: 7,
     },
   })
 )
