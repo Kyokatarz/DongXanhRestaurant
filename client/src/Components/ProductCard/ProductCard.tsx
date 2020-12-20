@@ -39,11 +39,11 @@ const ProductCard: React.FC<Product> = ({
     .join(', ')
   const classes = useStyles()
   return (
-    <Grid item md={10} lg={5}>
+    <Grid item xs={12} md={10} lg={5}>
       <Card>
         <CardActionArea>
           <CardMedia
-            image="http://via.placeholder.com/400x200"
+            image="./Assets/BaChiHeoNuongRiengMe.jpg"
             className={classes.image}
           />
           <CardContent>

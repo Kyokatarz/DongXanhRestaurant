@@ -62,6 +62,7 @@ const ProductSearchBar: React.FC<Props> = ({
         className={classes.searchBar}
         onChange={handleSearchBar}
         value={searchValue}
+        color="secondary"
       />
       <List>
         {categories.map((item) => (

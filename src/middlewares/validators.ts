@@ -16,7 +16,8 @@ export const createUserValidator = [
 ]
 
 export const signInValidator = [
-  check('username', 'Username must be provided').not().isEmpty(),
+  check('email', 'Email must be provided').not().isEmpty(),
+  check('email', 'Email is invalid').isEmail(),
   check('password', 'Password must be provided').not().isEmpty(),
 ]
 

@@ -40,8 +40,8 @@ export const registerUser = async (userObj: UserDocument): Promise<string> => {
 export const signUserIn = async (
   userObj: Partial<UserDocument>
 ): Promise<string> => {
-  const { username, password } = userObj
-  const user = await User.findOne({ username }).exec()
+  const { email, password } = userObj
+  const user = await User.findOne({ email }).exec()
   if (!user) throw 'CredentialError'
 
   const pwdMatch = await bcrypt.compare(password, user.password)
