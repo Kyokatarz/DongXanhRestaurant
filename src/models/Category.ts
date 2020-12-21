@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 export type CategoryDocument = mongoose.Document & {
-  name: string
+  name: string;
 }
 
 const CategorySchema = new mongoose.Schema({
