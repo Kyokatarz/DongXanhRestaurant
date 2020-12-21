@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 import Navbar from './Components/Navbar'
-import { fetchAllProducts } from './redux/actions'
+import { firstFetch } from './redux/actions'
 import Routes from './Routes'
 import customTheme from './theme'
 
@@ -18,7 +18,7 @@ export default function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchAllProducts())
+    dispatch(firstFetch())
   }, [dispatch])
 
   return (

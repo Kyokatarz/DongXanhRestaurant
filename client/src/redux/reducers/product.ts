@@ -2,12 +2,12 @@ import {
   ProductState,
   ProductActions,
   ADD_PRODUCT,
-  SET_FILTERED_PRODUCT,
+  SET_ALL_CATEGORIES,
 } from '../../types'
 
 const initState: ProductState = {
   allProducts: [],
-  filteredProducts: [],
+  allCategories: [],
 }
 
 export default function product(
@@ -19,9 +19,9 @@ export default function product(
       const { products } = action.payload
       return { ...state, allProducts: products }
     }
-    case SET_FILTERED_PRODUCT: {
-      const { filteredProducts } = action.payload
-      return { ...state, filteredProducts: filteredProducts }
+    case SET_ALL_CATEGORIES: {
+      const { categories } = action.payload
+      return { ...state, allCategories: categories }
     }
     default:
       return state

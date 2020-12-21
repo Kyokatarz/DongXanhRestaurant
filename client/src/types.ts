@@ -1,8 +1,8 @@
 // Action types
 export const ADD_PRODUCT = 'ADD_PRODUCT'
+export const SET_ALL_CATEGORIES = 'SET_ALL_CATEGORIES'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const TOGGLE_DIALOG = 'TOGGLE_DIALOG'
-export const SET_FILTERED_PRODUCT = 'SET_FILTERED_PRODUCT'
 
 // Enum
 export enum DialogType {
@@ -11,7 +11,7 @@ export enum DialogType {
 }
 
 // A product
-export type Category = 'pork' | 'fish' | 'beef'
+export type Category = { _id: string; name: string }
 export type Product = {
   _id: string
   name: string
@@ -27,13 +27,6 @@ export type AddAllProductsAction = {
   }
 }
 
-export type SetFilteredProducts = {
-  type: typeof SET_FILTERED_PRODUCT
-  payload: {
-    filteredProducts: Product[]
-  }
-}
-
 export type RemoveProductAction = {
   type: typeof REMOVE_PRODUCT
   payload: {
@@ -41,6 +34,12 @@ export type RemoveProductAction = {
   }
 }
 
+export type SetAllCategoriesAction = {
+  type: typeof SET_ALL_CATEGORIES
+  payload: {
+    categories: Category[]
+  }
+}
 export type ToggleDialogAction = {
   type: typeof TOGGLE_DIALOG
   payload: {
@@ -54,11 +53,11 @@ export type UiActions = ToggleDialogAction
 export type ProductActions =
   | AddAllProductsAction
   | RemoveProductAction
-  | SetFilteredProducts
+  | SetAllCategoriesAction
 
 export type ProductState = {
   allProducts: Product[]
-  filteredProducts: Product[]
+  allCategories: Category[]
 }
 
 // Using dynamic keys from an enum

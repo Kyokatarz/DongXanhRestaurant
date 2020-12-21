@@ -13,16 +13,13 @@ import {
 import React, { ChangeEvent } from 'react'
 import lodash from 'lodash'
 
-import { Category } from '../../types'
+import { Category, RootState } from '../../types'
+import { useSelector } from 'react-redux'
 
 type Props = {
   searchValue: string
   setSearchValue: any
-  categoryCheck: {
-    fish: boolean
-    beef: boolean
-    pork: boolean
-  }
+  categoryCheck: string[]
   setCategoryCheck: any
 }
 
@@ -41,13 +38,18 @@ const ProductSearchBar: React.FC<Props> = ({
   setCategoryCheck,
 }) => {
   const classes = useStyles()
-  const categories: Category[] = ['pork', 'fish', 'beef']
+  const allCategories = useSelector<RootState, Category[]>(
+    (state) => state.product.allCategories
+  )
+
+  const categories = allCategories.map((categoryObj) => categoryObj.name)
 
   const handleCheckBox = (event: ChangeEvent<HTMLInputElement>) => {
-    setCategoryCheck({
-      ...categoryCheck,
-      [event.target.name]: event.target.checked,
-    })
+    categoryCheck.includes(event.target.name)
+      ? setCategoryCheck((state: any) =>
+          [...state].filter((category) => category !== event.target.name)
+        ) // returns a new state having exclude the one that unticked
+      : setCategoryCheck((state: any) => [...state, event.target.name])
   }
 
   const handleSearchBar = (event: ChangeEvent<HTMLInputElement>) => {
@@ -73,7 +75,7 @@ const ProductSearchBar: React.FC<Props> = ({
                 edge="end"
                 name={item}
                 onChange={handleCheckBox}
-                checked={categoryCheck[item]}
+                checked={categoryCheck.includes(item)}
               />
             </ListItemSecondaryAction>
           </ListItem>

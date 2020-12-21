@@ -35,7 +35,7 @@ const ProductCard: React.FC<Product> = ({
   description,
 }) => {
   const categoryString = category
-    .map((string) => lodash.capitalize(string))
+    .map((categoryObj) => lodash.capitalize(categoryObj.name))
     .join(', ')
   const classes = useStyles()
   return (

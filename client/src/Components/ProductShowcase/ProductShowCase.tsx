@@ -4,15 +4,13 @@ import { Pagination } from '@material-ui/lab'
 import { useSelector } from 'react-redux'
 
 import ProductCard from '../ProductCard'
-import { Category, Product, RootState } from '../../types'
+import { Product, RootState } from '../../types'
 import useCategoryFilter from '../../hooks/useCategoryFilter'
 import useSearch from '../../hooks/useSearch'
 
 type Props = {
   searchValue: string
-  categoryCheck: {
-    [key: string]: boolean
-  }
+  categoryCheck: string[]
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -35,13 +33,8 @@ const ProductShowCase: React.FC<Props> = ({ searchValue, categoryCheck }) => {
   )
   const [activePage, setActivePage] = useState(0)
 
-  let checkedArray: Category[] = []
-  Object.keys(categoryCheck).forEach((key) =>
-    categoryCheck[key] === true ? checkedArray.push(key as Category) : null
-  )
-
   const searchFiltered = useSearch(allProducts, searchValue)
-  const chunks = useCategoryFilter(searchFiltered, checkedArray)
+  const chunks = useCategoryFilter(searchFiltered, categoryCheck)
   const activeChunk = chunks[activePage]
   const totalPage = chunks.length
 

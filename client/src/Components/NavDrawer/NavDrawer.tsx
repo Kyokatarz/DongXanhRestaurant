@@ -42,7 +42,7 @@ const NavDrawer: React.FC<NavDrawerProps> = ({ open, setNavDrawer }) => {
   const classes = useStyles()
 
   const renderList = [
-    { icon: <Home className={classes.icon} />, text: 'Home', linkTo: '/home' },
+    { icon: <Home className={classes.icon} />, text: 'Home', linkTo: '/' },
     {
       icon: <RestaurantMenu className={classes.icon} />,
       text: 'Menu',
@@ -72,7 +72,7 @@ const NavDrawer: React.FC<NavDrawerProps> = ({ open, setNavDrawer }) => {
         <Divider />
 
         {renderList.map((item) => (
-          <Link to={item.linkTo} className={classes.links}>
+          <Link to={item.linkTo} className={classes.links} key={item.text}>
             <ListItem button alignItems="center">
               {item.icon}
               <ListItemText>{item.text}</ListItemText>

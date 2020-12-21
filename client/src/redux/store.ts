@@ -8,7 +8,7 @@ import createRootReducer from './reducers'
 const initState: RootState = {
   product: {
     allProducts: [],
-    filteredProducts: [],
+    allCategories: [],
   },
   ui: {
     dialogOpen: {},

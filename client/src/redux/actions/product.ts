@@ -6,7 +6,8 @@ import {
   REMOVE_PRODUCT,
   ProductActions,
   Product,
-  SET_FILTERED_PRODUCT,
+  Category,
+  SET_ALL_CATEGORIES,
 } from '../../types'
 import { host } from '../../App'
 
@@ -19,11 +20,11 @@ export function addAllProducts(products: Product[]): ProductActions {
   }
 }
 
-export function setFilteredProducts(products: Product[]): ProductActions {
+export function setAllCategories(categories: Category[]): ProductActions {
   return {
-    type: SET_FILTERED_PRODUCT,
+    type: SET_ALL_CATEGORIES,
     payload: {
-      filteredProducts: products,
+      categories,
     },
   }
 }
@@ -44,6 +45,20 @@ export function fetchAllProducts() {
     const resp = await axios.get(host + '/api/v1/products/all')
     console.log(resp)
     dispatch(addAllProducts(resp.data))
-    dispatch(setFilteredProducts(resp.data))
+  }
+}
+
+export function fetchAllCategories() {
+  return async (dispatch: Dispatch) => {
+    const resp = await axios.get(host + '/api/v1/category/all')
+    console.log(resp)
+    dispatch(setAllCategories(resp.data))
+  }
+}
+
+export function firstFetch() {
+  return async (dispatch: Dispatch) => {
+    dispatch(fetchAllProducts() as any)
+    dispatch(fetchAllCategories() as any)
   }
 }
