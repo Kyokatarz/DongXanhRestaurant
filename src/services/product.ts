@@ -13,7 +13,7 @@ import stringifyError from '../util/stringifyError'
  |Get all products|
  +================*/
 export const getAllProducts = async (): Promise<ProductDocument[]> => {
-  const products = await Product.find().exec()
+  const products = await Product.find().populate('category')
   return products
 }
 

@@ -30,3 +30,11 @@ export const addProductValidatorWithAuth = [
   check('category', 'Category must be provided.').not().isEmpty(),
   check('price', 'Price must be provided.').not().isEmpty(),
 ]
+
+/*===================+
+ |Category validators|
+ +===================*/
+export const addNewCategoryWithAuth = [
+  auth,
+  check('name', 'Name must be provided').not().isEmpty(),
+]

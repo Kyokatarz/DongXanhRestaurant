@@ -9,6 +9,7 @@ import apiErrorHandler from './middlewares/apiErrorHandler'
 import movieRouter from './routers/movie'
 import productRouter from './routers/product'
 import userRouter from './routers/user'
+import categoryRouter from './routers/category'
 import { MONGODB_URI } from './util/secrets'
 
 const app = express()
@@ -40,10 +41,12 @@ app.use(lusca.xframe('SAMEORIGIN'))
 app.use(lusca.xssProtection(true))
 app.use(express.json())
 app.use(cors())
-// Use movie router
+// Use routers
 app.use('/api/v1/movies', movieRouter)
 app.use('/api/v1/products', productRouter)
 app.use('/api/v1/users', userRouter)
+app.use('/api/v1/users', userRouter)
+app.use('/api/v1/category', categoryRouter)
 // Custom API error handler
 app.use(apiErrorHandler)
 
