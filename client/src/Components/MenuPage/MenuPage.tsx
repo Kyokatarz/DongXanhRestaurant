@@ -7,8 +7,6 @@ import ProductContainer from '../ProductContainer'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     bodyContainer: {
-      width: '80vw',
-      maxWidth: 'none',
       marginTop: 65,
       borderWidth: 1,
       display: 'flex',

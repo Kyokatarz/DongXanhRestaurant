@@ -13,10 +13,14 @@ import ProductSearchBar from '../ProductSearchBar'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     innerContainer: {
-      border: `1px solid ${theme.palette.primary.light}`,
+      [theme.breakpoints.down('sm')]: {
+        width: '90vw',
+      },
+      border: `2px solid ${theme.palette.primary.light}`,
       marginTop: 10,
       padding: theme.spacing(2),
       borderRadius: 7,
+      marginBottom: theme.spacing(2),
     },
   })
 )
@@ -30,7 +34,7 @@ const ProductContainer = () => {
     console.log('categoryCheck: ', categoryCheck)
   })
   return (
-    <Container className={classes.innerContainer}>
+    <Container className={classes.innerContainer} maxWidth="lg">
       <Grid container spacing={1} direction="row">
         <Grid item xs={12} md={4} lg={3}>
           <ProductSearchBar

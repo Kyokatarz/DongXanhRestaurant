@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
     heroImg: {
       width: '100%',
       height: '100%',
+      objectFit: 'cover',
     },
     imgContainer: {
       width: '70vw',
