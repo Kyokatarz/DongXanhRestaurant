@@ -1,4 +1,4 @@
-name: Netlify Client Deploy
+name: install and build
 
 on: 
   push:
@@ -22,20 +22,11 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ~./npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-npm-
-            ${{ runner.os }}-
+            ${{ runner.os }}-node-
       - name: npm install,  build
         run: |
           cd client
           npm ci
           npm run build
-      - name: deploy
-        uses: netlify/actions/cli@master
-        env: 
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          CI: true
-        with:
-          args: deploy --dir=build --prod
