@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 
-import ProductShowCase from '../ProductShowCase'
+import ProductShowCase from '../ProductShowcase'
 import ProductSearchBar from '../ProductSearchBar'
 
 const useStyles = makeStyles((theme: Theme) =>
