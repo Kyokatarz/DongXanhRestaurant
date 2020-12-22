@@ -1,4 +1,4 @@
-name: install and build
+name: Server build
 
 on: 
   push:
@@ -27,6 +27,5 @@ jobs:
             ${{ runner.os }}-node-
       - name: npm install,  build
         run: |
-          cd client
           npm ci
           npm run build
