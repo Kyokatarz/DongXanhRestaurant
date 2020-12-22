@@ -26,11 +26,10 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - name: npm install, lint, build
+      - name: npm install,  build
         run: |
           cd client
           npm ci
-          npm run lint
           npm run build
       - name: deploy
         uses: netlify/actions/cli@master
@@ -39,4 +38,4 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           CI: true
         with:
-          args: deploy --dir-build --prod
+          args: deploy --dir=build --prod
