@@ -1,0 +1,42 @@
+name: Netlify Client Deploy
+
+on: 
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+    
+jobs:
+  build-node:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Get npm cache directory
+        id: npm-cache
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: npm install, lint, build
+        run: |
+          cd client
+          npm ci
+          npm run lint
+          npm run build
+      - name: deploy
+        uses: netlify/actions/cli@master
+        env: 
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          CI: true
+        with:
+          args: deploy --dir-build --prod
