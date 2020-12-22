@@ -38,4 +38,4 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           CI: true
         with:
-          args: deploy --dir=build --prod
+          args: deploy --dir=client/build --prod
