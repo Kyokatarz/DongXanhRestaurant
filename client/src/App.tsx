@@ -10,7 +10,7 @@ import customTheme from './theme'
 export const host =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000'
-    : process.env['SERVER_URL']
+    : 'https://dongxanhrestaurant-server.herokuapp.com'
 
 const theme = createMuiTheme(customTheme)
 
@@ -21,6 +21,9 @@ export default function App() {
     dispatch(firstFetch())
   }, [dispatch])
 
+  useEffect(() => {
+    console.log(process.env)
+  })
   return (
     <>
       <ThemeProvider theme={theme}>
