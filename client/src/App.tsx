@@ -9,8 +9,8 @@ import customTheme from './theme'
 
 export const host =
   process.env.NODE_ENV === 'development'
-    ? 'https://dongxanhrestaurant-server.herokuapp.com'
-    : process.env['SERVER_URL'] //TODO: Add backend URL when deploy
+    ? 'http://localhost:3000'
+    : process.env['SERVER_URL']
 
 const theme = createMuiTheme(customTheme)
 
