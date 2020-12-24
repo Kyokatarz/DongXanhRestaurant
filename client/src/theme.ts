@@ -1,6 +1,15 @@
 import { ThemeOptions } from '@material-ui/core'
 
 const customTheme: ThemeOptions = {
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        html: {
+          overflowX: 'hidden',
+        },
+      },
+    },
+  },
   palette: {
     type: 'dark',
     primary: {

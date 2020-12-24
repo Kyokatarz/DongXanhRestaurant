@@ -1,5 +1,4 @@
 import {
-  Fade,
   Container,
   Typography,
   createStyles,
@@ -30,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
       left: 0,
       zIndex: 3,
       background:
-        'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.731608) 68.23%, rgba(0, 0, 0, 0.96875) 100%)',
+        'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 68.23%, rgba(0, 0, 0, 0.9) 100%)',
     },
     description: {
       fontSize: 12,
@@ -55,41 +54,39 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-const SmallImageOverlay: React.FC<Props> = ({ showOverlay }) => {
+const SmallImageOverlay: React.FC<Props> = () => {
   const classes = useStyles()
   return (
-    <Fade in={showOverlay}>
-      <Container className={classes.overlay}>
-        <Typography variant="h6" component="header" className={classes.header}>
-          Name goes here
-        </Typography>
-        <Typography variant="body1" className={classes.price}></Typography>
-        <Grid container justify="flex-end" className={classes.buttonContainer}>
-          <Grid item>
-            <Button
-              variant="contained"
-              color="secondary"
-              size="small"
-              className={classes.button}
-            >
-              <InfoOutlinedIcon />
-              Info
-            </Button>
-          </Grid>
-          <Grid item>
-            <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              className={classes.button}
-            >
-              <AddShoppingCartIcon />
-              VND 99,000
-            </Button>
-          </Grid>
+    <Container className={classes.overlay}>
+      <Typography variant="h6" component="header" className={classes.header}>
+        Name goes here
+      </Typography>
+      <Typography variant="body1" className={classes.price}></Typography>
+      <Grid container justify="flex-end" className={classes.buttonContainer}>
+        <Grid item>
+          <Button
+            variant="contained"
+            color="secondary"
+            size="small"
+            className={classes.button}
+          >
+            <InfoOutlinedIcon />
+            Info
+          </Button>
         </Grid>
-      </Container>
-    </Fade>
+        <Grid item>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            className={classes.button}
+          >
+            <AddShoppingCartIcon />
+            VND 99,000
+          </Button>
+        </Grid>
+      </Grid>
+    </Container>
   )
 }
 
