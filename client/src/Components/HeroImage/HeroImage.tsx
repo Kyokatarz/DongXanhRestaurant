@@ -2,12 +2,11 @@ import {
   Container,
   createStyles,
   makeStyles,
-  Theme,
   Typography,
 } from '@material-ui/core'
 import React from 'react'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     heroImg: {
       width: '100%',
@@ -33,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
       position: 'absolute',
       top: 0,
       left: 0,
-      backgroundColor: 'rgba(0,0,0,0.6)',
+      backgroundColor: 'rgba(0,0,0,0.4)',
       textShadow: '4px 4px 3px rgba(0, 0, 0, 0.4)',
     },
   })
@@ -44,7 +43,7 @@ const HeroImage = () => {
   return (
     <Container className={classes.imgContainer}>
       <img
-        src="http://via.placeholder.com/400x200"
+        src="/Assets/MenuPageImgs/HeroImg.png"
         alt=""
         className={classes.heroImg}
       />
