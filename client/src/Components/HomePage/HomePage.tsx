@@ -9,6 +9,7 @@ import {
 
 import RestaurantLogoImage from '../RestaurantLogoImage'
 import RestaurantSpaceImage from '../RestaurantSpaceImage'
+import BirthdayImage from '../BirthdayImage'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -58,6 +59,7 @@ const HomePage = () => {
         <Grid item xs={12}>
           <RestaurantLogoImage />
           <RestaurantSpaceImage />
+          <BirthdayImage />
         </Grid>
       </Grid>
     </Container>

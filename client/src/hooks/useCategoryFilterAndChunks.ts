@@ -2,8 +2,11 @@ import lodash from 'lodash'
 
 import { Product } from '../types'
 
-export default function (sourceArray: Product[], categoryArray: string[]) {
-  const numberOfChunks = 2
+export default function (
+  sourceArray: Product[],
+  categoryArray: string[],
+  numberOfChunks: number
+) {
   const categoryFiltered = sourceArray.filter((productObj) =>
     categoryArray.some((category) =>
       productObj.category.map((catObj) => catObj.name).includes(category)

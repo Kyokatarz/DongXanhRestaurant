@@ -5,6 +5,7 @@ const customTheme: ThemeOptions = {
     MuiCssBaseline: {
       '@global': {
         html: {
+          scrollBehavior: 'smooth',
           overflowX: 'hidden',
         },
       },

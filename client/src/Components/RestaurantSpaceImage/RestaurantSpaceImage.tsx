@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
       position: 'relative',
-      marginBottom: '100px',
       width: '100vw',
       height: '90vh',
     },
@@ -43,25 +42,29 @@ const useStyles = makeStyles((theme: Theme) =>
 const RestaurantSpaceImage = () => {
   const classes = useStyles()
   return (
-    <Grid container className={classes.container}>
-      <Grid item xs={12} md={6}>
-        <img
-          src="/Assets/HomePageImgs/open_space1.jpg"
-          className={classes.img}
-          alt=""
-        />
-      </Grid>
+    <Grid
+      container
+      className={clsx(classes.container)}
+      id="restaurant-space-image"
+    >
       <Grid
         item
         xs={12}
         md={6}
         className={clsx(classes.descriptionContainer, classes.center)}
       >
-        <Typography align="justify" variant="h5" component="p">
+        <Typography align="justify" variant="h4" component="p">
           Ẩm thực sân thượng <br />
           với không gian rộng rãi <br />
           thoáng mát
         </Typography>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <img
+          src="/Assets/HomePageImgs/open_space1.jpg"
+          className={classes.img}
+          alt=""
+        />
       </Grid>
     </Grid>
   )

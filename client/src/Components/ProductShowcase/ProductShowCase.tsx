@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 import ProductCard from '../ProductCard'
 import { Product, RootState } from '../../types'
-import useCategoryFilter from '../../hooks/useCategoryFilter'
+import useCategoryFilterAndChunks from '../../hooks/useCategoryFilterAndChunks'
 import useSearch from '../../hooks/useSearch'
 
 type Props = {
@@ -34,7 +34,7 @@ const ProductShowCase: React.FC<Props> = ({ searchValue, categoryCheck }) => {
   const [activePage, setActivePage] = useState(0)
 
   const searchFiltered = useSearch(allProducts, searchValue)
-  const chunks = useCategoryFilter(searchFiltered, categoryCheck)
+  const chunks = useCategoryFilterAndChunks(searchFiltered, categoryCheck, 8)
   const activeChunk = chunks[activePage]
   const totalPage = chunks.length
 
