@@ -17,12 +17,12 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom: theme.spacing(1),
       width: '100vw',
       height: '60vh',
+      marginTop: theme.spacing(1),
     },
     img: {
       height: '100%',
       width: '100%',
       objectFit: 'cover',
-      filter: 'blur(3px)',
     },
     center: {
       display: 'flex',

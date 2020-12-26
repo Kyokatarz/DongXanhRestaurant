@@ -19,8 +19,8 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '100%',
       minHeight: '75vh',
       width: '100%',
-      objectFit: 'cover',
       border: '1px solid grey',
+      objectFit: 'cover',
     },
     descriptionContainer: {
       [theme.breakpoints.down('sm')]: {
@@ -53,7 +53,7 @@ const RestaurantSpaceImage = () => {
         md={6}
         className={clsx(classes.descriptionContainer, classes.center)}
       >
-        <Typography align="justify" variant="h4" component="p">
+        <Typography align="justify" variant="h5" component="p">
           Ẩm thực sân thượng <br />
           với không gian rộng rãi <br />
           thoáng mát

@@ -40,14 +40,8 @@ export type SetAllCategoriesAction = {
     categories: Category[]
   }
 }
-export type ToggleDialogAction = {
-  type: typeof TOGGLE_DIALOG
-  payload: {
-    dialog: DialogType
-  }
-}
 
-export type UiActions = ToggleDialogAction
+//UI actions
 
 // Use this union in reducer
 export type ProductActions =
@@ -62,9 +56,7 @@ export type ProductState = {
 
 // Using dynamic keys from an enum
 export type UiState = {
-  dialogOpen: {
-    [key in DialogType]?: boolean
-  }
+  allItemsLoading: boolean
 }
 
 export type RootState = {

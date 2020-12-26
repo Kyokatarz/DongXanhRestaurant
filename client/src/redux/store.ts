@@ -11,7 +11,7 @@ const initState: RootState = {
     allCategories: [],
   },
   ui: {
-    dialogOpen: {},
+    allItemsLoading: true,
   },
 }
 

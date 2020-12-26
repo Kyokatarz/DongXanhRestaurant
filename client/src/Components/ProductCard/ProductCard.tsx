@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Button,
   Card,
@@ -9,17 +9,19 @@ import {
   createStyles,
   Grid,
   makeStyles,
-  Theme,
   Typography,
 } from '@material-ui/core'
 import lodash from 'lodash'
 
 import { Product } from '../../types'
+import { Skeleton } from '@material-ui/lab'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     image: {
       height: 140,
+      width: '100%',
+      objectFit: 'cover',
     },
     buttonContainer: {
       display: 'flex',
@@ -38,14 +40,23 @@ const ProductCard: React.FC<Product> = ({
     .map((categoryObj) => lodash.capitalize(categoryObj.name))
     .join(', ')
   const classes = useStyles()
+  const [imgLoad, setImgLoad] = useState(false)
+
   return (
     <Grid item xs={12} md={10} lg={5}>
       <Card>
         <CardActionArea>
-          <CardMedia
-            image="./Assets/BaChiHeoNuongRiengMe.jpg"
-            className={classes.image}
-          />
+          {!imgLoad && <Skeleton className={classes.image} variant="rect" />}
+          <CardMedia>
+            <img
+              style={{ display: imgLoad ? 'block' : 'none ' }}
+              src="https://dong-xanh-restaurant.s3-ap-southeast-1.amazonaws.com/AllDishes/LauSuaDongXanh.jpg"
+              className={classes.image}
+              onLoad={() => setImgLoad(true)}
+              alt=""
+            />
+          </CardMedia>
+
           <CardContent>
             <Typography variant="h5" component="h2">
               {name}
