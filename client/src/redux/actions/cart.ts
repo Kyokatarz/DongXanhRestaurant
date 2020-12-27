@@ -8,14 +8,15 @@ export const updateCart = (newCart: ItemInCart[]): CartActions => {
 }
 
 //redux-thunk
-export const addItemToCartAndSave = (
+export const updateItemInCartAndSave = (
   inCartState: ItemInCart[],
-  itemId: string
+  item: { _id: string; name: string; price: number },
+  modifier: 'add' | 'remove'
 ) => {
   return (dispatch: Dispatch<any>) => {
-    const newCart = useUpdateCartItem(inCartState, itemId, 'add')
+    const newCart = useUpdateCartItem(inCartState, item, modifier)
     localStorage.setItem('inCart', JSON.stringify(newCart))
-
+    console.log('newCart', newCart)
     dispatch(updateCart(newCart))
   }
 }

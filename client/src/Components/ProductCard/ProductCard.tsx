@@ -17,7 +17,7 @@ import { Skeleton } from '@material-ui/lab'
 import lodash from 'lodash'
 
 import { ItemInCart, Product, RootState } from '../../types'
-import { addItemToCartAndSave } from '../../redux/actions'
+import { updateItemInCartAndSave } from '../../redux/actions'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -52,7 +52,7 @@ const ProductCard: React.FC<Product> = ({
     .join(', ')
 
   const onAddItemHandler = () => {
-    dispatch(addItemToCartAndSave(inCart, _id))
+    dispatch(updateItemInCartAndSave(inCart, { _id, name, price }, 'add'))
   }
 
   return (

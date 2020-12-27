@@ -2,6 +2,7 @@ import { createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
+import CartDrawer from './Components/CartDrawer'
 import Navbar from './Components/Navbar'
 import { firstFetch } from './redux/actions'
 import Routes from './Routes'
@@ -30,6 +31,7 @@ export default function App() {
         <CssBaseline />
         <Navbar />
         <Routes />
+        <CartDrawer />
       </ThemeProvider>
     </>
   )

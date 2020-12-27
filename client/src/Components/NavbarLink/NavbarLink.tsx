@@ -4,12 +4,13 @@ import {
   Typography,
   makeStyles,
   createStyles,
-  Theme,
 } from '@material-ui/core'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const useStyles = makeStyles((theme: Theme) =>
+import CartIcon from '../CartIcon'
+
+const useStyles = makeStyles(() =>
   createStyles({
     links: {
       color: 'inherit',
@@ -21,14 +22,14 @@ const useStyles = makeStyles((theme: Theme) =>
 const NavbarLink = () => {
   const classes = useStyles()
   return (
-    <Hidden xsDown>
-      <Grid
-        container
-        direction="row"
-        className="NavbarLink"
-        justify="flex-end"
-        alignItems="center"
-      >
+    <Grid
+      container
+      direction="row"
+      className="NavbarLink"
+      justify="flex-end"
+      alignItems="center"
+    >
+      <Hidden xsDown>
         <Grid item sm={2} xs={3}>
           <Link to="/" className={classes.links}>
             <Typography variant="body1">Home</Typography>
@@ -44,8 +45,11 @@ const NavbarLink = () => {
             <Typography variant="body1">Contact Us</Typography>
           </Link>
         </Grid>
+      </Hidden>
+      <Grid item sm={2} xs={3}>
+        <CartIcon />
       </Grid>
-    </Hidden>
+    </Grid>
   )
 }
 

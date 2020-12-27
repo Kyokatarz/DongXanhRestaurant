@@ -12,6 +12,7 @@ const initState: RootState = {
   },
   ui: {
     allItemsLoading: true,
+    cartDrawer: false,
   },
   cart: {
     inCart: [],

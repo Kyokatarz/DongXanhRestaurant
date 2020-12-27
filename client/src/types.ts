@@ -7,6 +7,7 @@ export const TOGGLE_DIALOG = 'TOGGLE_DIALOG'
 export const UPDATE_CART = 'UPDATE_CART'
 
 export const TOGGLE_ALL_ITEMS_LOADING = 'TOGGLE_ALL_ITEMS_LOADING'
+export const TOGGLE_CART_DRAWER = 'TOGGLE_CART_DRAWER'
 
 // Enum
 export enum DialogType {
@@ -47,9 +48,12 @@ export type SetAllCategoriesAction = {
   }
 }
 
+//Item in cart type
 export type ItemInCart = {
   _id: string
+  name: string
   quantity: number
+  price: number
 }
 
 //Cart actions
@@ -57,9 +61,14 @@ export type UpdateCartAction = {
   type: typeof UPDATE_CART
   payload: ItemInCart[]
 }
+
 //UI actions
 export type ToggleAllItemsLoadingAction = {
   type: typeof TOGGLE_ALL_ITEMS_LOADING
+}
+
+export type ToggleCartDrawerAction = {
+  type: typeof TOGGLE_CART_DRAWER
 }
 
 // Use this union in reducer
@@ -68,7 +77,7 @@ export type ProductActions =
   | RemoveProductAction
   | SetAllCategoriesAction
 
-export type UIActions = ToggleAllItemsLoadingAction
+export type UIActions = ToggleAllItemsLoadingAction | ToggleCartDrawerAction
 
 export type CartActions = UpdateCartAction
 
@@ -83,6 +92,7 @@ export type CartState = {
 
 export type UiState = {
   allItemsLoading: boolean
+  cartDrawer: boolean
 }
 
 export type RootState = {
