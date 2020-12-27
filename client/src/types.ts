@@ -3,6 +3,9 @@ export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const SET_ALL_CATEGORIES = 'SET_ALL_CATEGORIES'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const TOGGLE_DIALOG = 'TOGGLE_DIALOG'
+
+export const UPDATE_CART = 'UPDATE_CART'
+
 export const TOGGLE_ALL_ITEMS_LOADING = 'TOGGLE_ALL_ITEMS_LOADING'
 
 // Enum
@@ -20,6 +23,8 @@ export type Product = {
   category: Category[]
   description?: string
 }
+
+// Product actions
 
 export type AddAllProductsAction = {
   type: typeof ADD_PRODUCT
@@ -42,6 +47,16 @@ export type SetAllCategoriesAction = {
   }
 }
 
+export type ItemInCart = {
+  _id: string
+  quantity: number
+}
+
+//Cart actions
+export type UpdateCartAction = {
+  type: typeof UPDATE_CART
+  payload: ItemInCart[]
+}
 //UI actions
 export type ToggleAllItemsLoadingAction = {
   type: typeof TOGGLE_ALL_ITEMS_LOADING
@@ -53,12 +68,18 @@ export type ProductActions =
   | RemoveProductAction
   | SetAllCategoriesAction
 
+export type UIActions = ToggleAllItemsLoadingAction
+
+export type CartActions = UpdateCartAction
+
 export type ProductState = {
   allProducts: Product[]
   allCategories: Category[]
 }
 
-export type UIActions = ToggleAllItemsLoadingAction
+export type CartState = {
+  inCart: ItemInCart[]
+}
 
 export type UiState = {
   allItemsLoading: boolean
@@ -67,4 +88,5 @@ export type UiState = {
 export type RootState = {
   product: ProductState
   ui: UiState
+  cart: CartState
 }

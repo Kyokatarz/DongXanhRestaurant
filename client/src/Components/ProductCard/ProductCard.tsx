@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   Button,
   Card,
@@ -11,10 +12,12 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core'
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
+import { Skeleton } from '@material-ui/lab'
 import lodash from 'lodash'
 
-import { Product } from '../../types'
-import { Skeleton } from '@material-ui/lab'
+import { ItemInCart, Product, RootState } from '../../types'
+import { addItemToCartAndSave } from '../../redux/actions'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -31,16 +34,26 @@ const useStyles = makeStyles(() =>
 )
 
 const ProductCard: React.FC<Product> = ({
+  _id,
   name,
   price,
   category,
   description,
 }) => {
+  const classes = useStyles()
+  const inCart = useSelector<RootState, ItemInCart[]>(
+    (state) => state.cart.inCart
+  )
+  const [imgLoad, setImgLoad] = useState(false)
+  const dispatch = useDispatch()
+
   const categoryString = category
     .map((categoryObj) => lodash.capitalize(categoryObj.name))
     .join(', ')
-  const classes = useStyles()
-  const [imgLoad, setImgLoad] = useState(false)
+
+  const onAddItemHandler = () => {
+    dispatch(addItemToCartAndSave(inCart, _id))
+  }
 
   return (
     <Grid item xs={12} md={10} lg={5}>
@@ -71,9 +84,12 @@ const ProductCard: React.FC<Product> = ({
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions className={classes.buttonContainer}>
-          <Button size="small" color="secondary">
-            {price}
+        <CardActions
+          className={classes.buttonContainer}
+          onClick={onAddItemHandler}
+        >
+          <Button size="small" color="secondary" variant="outlined">
+            <AddShoppingCartIcon /> VND {price}
           </Button>
         </CardActions>
       </Card>

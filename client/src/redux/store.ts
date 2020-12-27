@@ -13,6 +13,9 @@ const initState: RootState = {
   ui: {
     allItemsLoading: true,
   },
+  cart: {
+    inCart: [],
+  },
 }
 
 export default function makeStore(initialState = initState) {

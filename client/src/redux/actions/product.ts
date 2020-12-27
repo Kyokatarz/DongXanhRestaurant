@@ -10,7 +10,7 @@ import {
   SET_ALL_CATEGORIES,
 } from '../../types'
 import { host } from '../../App'
-import { toggleAllItemsLoading } from '.'
+import { retrieveStorageAndSetCart, toggleAllItemsLoading } from '.'
 
 export function addAllProducts(products: Product[]): ProductActions {
   return {
@@ -59,8 +59,9 @@ export function fetchAllCategories() {
 }
 
 export function firstFetch() {
-  return async (dispatch: Dispatch) => {
-    dispatch(fetchAllProducts() as any)
-    dispatch(fetchAllCategories() as any)
+  return async (dispatch: Dispatch<any>) => {
+    dispatch(fetchAllProducts())
+    dispatch(fetchAllCategories())
+    dispatch(retrieveStorageAndSetCart())
   }
 }
