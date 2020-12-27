@@ -44,22 +44,23 @@ const CartCard: React.FC<Props> = ({ _id, name, quantity, price }) => {
 
   return (
     <ListItem>
-      {_id}
       <Card className={classes.card}>
-        <Typography variant="h6" color="secondary">
+        <Typography variant="h6" component="p" color="secondary">
           {name}
         </Typography>
         <Typography variant="body1">
           Số lượng:
           <IconButton onClick={removeHandler}>
-            <Remove fontSize="small" />
+            <Remove fontSize="small" color="primary" />
           </IconButton>
           {quantity}
           <IconButton onClick={addHandler}>
-            <Add fontSize="small" />
+            <Add fontSize="small" color="secondary" />
           </IconButton>
         </Typography>
-        <Typography variant="body1">Đơn giá: VND {price}</Typography>
+        <Typography variant="body1">
+          Đơn giá: VND {price.toLocaleString('hi-IN')}{' '}
+        </Typography>
       </Card>
     </ListItem>
   )

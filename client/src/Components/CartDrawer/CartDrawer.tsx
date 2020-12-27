@@ -6,10 +6,15 @@ import {
   List,
   ListItem,
   IconButton,
+  Typography,
+  CardContent,
+  Card,
+  Button,
 } from '@material-ui/core'
 import { Close } from '@material-ui/icons'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { toggleCartDrawer } from '../../redux/actions'
 import { ItemInCart, RootState } from '../../types'
@@ -33,6 +38,9 @@ const useStyles = makeStyles((theme: Theme) =>
     card: {
       width: '100%',
       padding: theme.spacing(2),
+    },
+    cartFooter: {
+      marginTop: theme.spacing(4),
     },
   })
 )
@@ -70,12 +78,33 @@ const CartDrawer = () => {
         ))}
 
         <ListItem>
-          Tổng cộng:{' '}
-          {inCart
-            .map((item) => item.price * item.quantity)
-            .reduce((sum, item) => sum + item, 0)}
+          <Typography variant="body1">Tổng cộng: VND</Typography>
+          <Typography variant="h5" color="secondary">
+            {inCart
+              .map((item) => item.price * item.quantity)
+              .reduce((sum, item) => sum + item, 0)
+              .toLocaleString('hi-IN')}
+          </Typography>
         </ListItem>
       </List>
+
+      <Card className={classes.cartFooter} elevation={24}>
+        <CardContent>
+          <Typography variant="subtitle1">
+            Tính năng thánh toán online đang được phát triển! <br />
+            Hãy gọi điện để đặt món ngay nhé!
+          </Typography>
+
+          <Link
+            to="/contact"
+            style={{ color: 'inherit', textDecoration: 'none' }}
+          >
+            <Button variant="outlined" color="secondary" onClick={handleClose}>
+              Đặt món ngay
+            </Button>
+          </Link>
+        </CardContent>
+      </Card>
     </Drawer>
   )
 }
