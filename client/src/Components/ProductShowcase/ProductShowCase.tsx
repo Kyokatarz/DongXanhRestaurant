@@ -7,7 +7,6 @@ import ProductCard from '../ProductCard'
 import { Product, RootState } from '../../types'
 import useCategoryFilterAndChunks from '../../hooks/useCategoryFilterAndChunks'
 import useSearch from '../../hooks/useSearch'
-import LoadingShowcase from '../LoadingShowcase'
 
 type Props = {
   searchValue: string
@@ -66,7 +65,6 @@ const ProductShowCase: React.FC<Props> = ({ searchValue, categoryCheck }) => {
         className={classes.pagination}
         onChange={pageChangeHandler}
       />
-      <LoadingShowcase />
     </div>
   )
 }

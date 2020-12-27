@@ -3,6 +3,7 @@ export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const SET_ALL_CATEGORIES = 'SET_ALL_CATEGORIES'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const TOGGLE_DIALOG = 'TOGGLE_DIALOG'
+export const TOGGLE_ALL_ITEMS_LOADING = 'TOGGLE_ALL_ITEMS_LOADING'
 
 // Enum
 export enum DialogType {
@@ -42,6 +43,9 @@ export type SetAllCategoriesAction = {
 }
 
 //UI actions
+export type ToggleAllItemsLoadingAction = {
+  type: typeof TOGGLE_ALL_ITEMS_LOADING
+}
 
 // Use this union in reducer
 export type ProductActions =
@@ -54,7 +58,8 @@ export type ProductState = {
   allCategories: Category[]
 }
 
-// Using dynamic keys from an enum
+export type UIActions = ToggleAllItemsLoadingAction
+
 export type UiState = {
   allItemsLoading: boolean
 }

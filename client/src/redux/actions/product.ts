@@ -10,6 +10,7 @@ import {
   SET_ALL_CATEGORIES,
 } from '../../types'
 import { host } from '../../App'
+import { toggleAllItemsLoading } from '.'
 
 export function addAllProducts(products: Product[]): ProductActions {
   return {
@@ -44,6 +45,7 @@ export function fetchAllProducts() {
   return async (dispatch: Dispatch) => {
     const resp = await axios.get(host + '/api/v1/products/all')
     console.log(resp)
+    dispatch(toggleAllItemsLoading())
     dispatch(addAllProducts(resp.data))
   }
 }

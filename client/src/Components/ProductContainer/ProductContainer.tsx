@@ -9,6 +9,9 @@ import React, { useEffect, useState } from 'react'
 
 import ProductShowCase from '../ProductShowcase'
 import ProductSearchBar from '../ProductSearchBar'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../types'
+import LoadingShowcase from '../LoadingShowcase'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,6 +32,9 @@ const ProductContainer = () => {
   const classes = useStyles()
   const [searchValue, setSearchValue] = useState('')
   const [categoryCheck, setCategoryCheck] = useState<string[]>([])
+  const allItemsLoading = useSelector<RootState, boolean>(
+    (state) => state.ui.allItemsLoading
+  )
 
   useEffect(() => {
     console.log('categoryCheck: ', categoryCheck)
@@ -46,10 +52,14 @@ const ProductContainer = () => {
         </Grid>
 
         <Grid item xs={12} md={8} lg={9}>
-          <ProductShowCase
-            searchValue={searchValue}
-            categoryCheck={categoryCheck}
-          />
+          {!allItemsLoading ? (
+            <ProductShowCase
+              searchValue={searchValue}
+              categoryCheck={categoryCheck}
+            />
+          ) : (
+            <LoadingShowcase />
+          )}
         </Grid>
       </Grid>
     </Container>
