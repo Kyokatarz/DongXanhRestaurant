@@ -59,7 +59,11 @@ const CartCard: React.FC<Props> = ({ _id, name, quantity, price }) => {
           </IconButton>
         </Typography>
         <Typography variant="body1">
-          Đơn giá: VND {price.toLocaleString('hi-IN')}{' '}
+          Đơn giá:{' '}
+          {price.toLocaleString('vi-VI', {
+            style: 'currency',
+            currency: 'VND',
+          })}{' '}
         </Typography>
       </Card>
     </ListItem>

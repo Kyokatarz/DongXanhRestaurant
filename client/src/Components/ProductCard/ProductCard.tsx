@@ -89,7 +89,11 @@ const ProductCard: React.FC<Product> = ({
           onClick={onAddItemHandler}
         >
           <Button size="small" color="secondary" variant="outlined">
-            <AddShoppingCartIcon /> VND {price}
+            <AddShoppingCartIcon />
+            {price.toLocaleString('vi-VI', {
+              style: 'currency',
+              currency: 'VND',
+            })}
           </Button>
         </CardActions>
       </Card>

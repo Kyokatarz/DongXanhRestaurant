@@ -22,6 +22,9 @@ import CartCard from '../CartCard'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    drawer: {
+      overflowY: 'scroll',
+    },
     listContainer: {
       [theme.breakpoints.down('md')]: {
         width: '40vw',
@@ -60,13 +63,19 @@ const CartDrawer = () => {
   }
 
   return (
-    <Drawer anchor="right" open={cartDrawer} onClose={handleClose}>
+    <Drawer
+      anchor="right"
+      open={cartDrawer}
+      onClose={handleClose}
+      className={classes.drawer}
+    >
       <List className={classes.listContainer}>
         <ListItem divider>
           <IconButton onClick={handleClose}>
             <Close />
           </IconButton>
         </ListItem>
+
         {inCart.map((item) => (
           <CartCard
             _id={item._id}
@@ -78,33 +87,39 @@ const CartDrawer = () => {
         ))}
 
         <ListItem>
-          <Typography variant="body1">Tổng cộng: VND</Typography>
+          <Typography variant="body1">Tổng cộng: </Typography>
           <Typography variant="h5" color="secondary">
             {inCart
               .map((item) => item.price * item.quantity)
               .reduce((sum, item) => sum + item, 0)
-              .toLocaleString('hi-IN')}
+              .toLocaleString('vi-VI', { style: 'currency', currency: 'VND' })}
           </Typography>
         </ListItem>
+
+        <ListItem>
+          <Card className={classes.cartFooter} elevation={24}>
+            <CardContent>
+              <Typography variant="subtitle1">
+                Tính năng thánh toán online đang được phát triển! <br />
+                Hãy gọi điện để đặt món ngay nhé!
+              </Typography>
+
+              <Link
+                to="/contact"
+                style={{ color: 'inherit', textDecoration: 'none' }}
+              >
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={handleClose}
+                >
+                  Đặt món ngay
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+        </ListItem>
       </List>
-
-      <Card className={classes.cartFooter} elevation={24}>
-        <CardContent>
-          <Typography variant="subtitle1">
-            Tính năng thánh toán online đang được phát triển! <br />
-            Hãy gọi điện để đặt món ngay nhé!
-          </Typography>
-
-          <Link
-            to="/contact"
-            style={{ color: 'inherit', textDecoration: 'none' }}
-          >
-            <Button variant="outlined" color="secondary" onClick={handleClose}>
-              Đặt món ngay
-            </Button>
-          </Link>
-        </CardContent>
-      </Card>
     </Drawer>
   )
 }
