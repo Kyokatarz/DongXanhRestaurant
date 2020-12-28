@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
   res.send('This is product route.')
 })
 router.get('/all', productController.getAllProducts)
+router.get('/:productId', productController.getProductById)
 router.post(
   '/add',
   validators.addProductValidatorWithAuth,

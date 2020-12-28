@@ -23,6 +23,26 @@ export const getAllProducts = async (
   }
 }
 
+/**************************************
+ * @ROUTE GET /v1/products/:productId *
+ * @DESC Get a product                *
+ * @ACCESS PUBLIC                     *
+ **************************************/
+export const getProductById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { productId } = req.params
+    const product = await Product.findById(productId)
+    console.log(product)
+    res.status(200).json(product)
+  } catch (err) {
+    next(productService.errorHandler(err))
+  }
+}
+
 /***********************************
  * @ROUTE POST /v1/products/add    *
  * @DESC add a product             *
