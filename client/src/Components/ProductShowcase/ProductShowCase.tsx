@@ -7,6 +7,7 @@ import ProductCard from '../ProductCard'
 import { Product, RootState } from '../../types'
 import useCategoryFilterAndChunks from '../../hooks/useCategoryFilterAndChunks'
 import useSearch from '../../hooks/useSearch'
+import EmptyShowcase from '../EmptyShowcase'
 
 type Props = {
   searchValue: string
@@ -26,16 +27,21 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-const ProductShowCase: React.FC<Props> = ({ searchValue, categoryCheck }) => {
+const ProductShowcase: React.FC<Props> = ({ searchValue, categoryCheck }) => {
   const classes = useStyles()
   const allProducts = useSelector<RootState, Product[]>(
     (state) => state.product.allProducts
   )
+  const allItemsLoading = useSelector<RootState, boolean>(
+    (state) => state.ui.allItemsLoading
+  )
+
   const [activePage, setActivePage] = useState(0)
 
   const searchFiltered = useSearch(allProducts, searchValue)
   const chunks = useCategoryFilterAndChunks(searchFiltered, categoryCheck, 8)
-  const activeChunk = chunks[activePage]
+
+  const activeChunk = chunks[activePage] || []
   const totalPage = chunks.length
 
   const pageChangeHandler = (_: ChangeEvent<unknown>, value: number) => {
@@ -49,7 +55,8 @@ const ProductShowCase: React.FC<Props> = ({ searchValue, categoryCheck }) => {
   return (
     <div className={classes.container}>
       <Grid container spacing={2} justify="center">
-        {(activeChunk || []).map((product) => (
+        {!allItemsLoading && activeChunk.length === 0 && <EmptyShowcase />}
+        {activeChunk.map((product) => (
           <ProductCard
             key={product._id}
             _id={product._id}
@@ -69,4 +76,4 @@ const ProductShowCase: React.FC<Props> = ({ searchValue, categoryCheck }) => {
   )
 }
 
-export default ProductShowCase
+export default ProductShowcase
