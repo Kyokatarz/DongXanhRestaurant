@@ -18,6 +18,7 @@ import lodash from 'lodash'
 
 import { ItemInCart, Product, RootState } from '../../types'
 import { updateItemInCartAndSave } from '../../redux/actions'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -58,32 +59,41 @@ const ProductCard: React.FC<Product> = ({
   return (
     <Grid item xs={12} md={10} lg={5}>
       <Card>
-        <CardActionArea>
-          {!imgLoad && <Skeleton className={classes.image} variant="rect" />}
-          <CardMedia>
-            <img
-              style={{ display: imgLoad ? 'block' : 'none ' }}
-              src="https://dong-xanh-restaurant.s3-ap-southeast-1.amazonaws.com/AllDishes/LauSuaDongXanh.jpg"
-              className={classes.image}
-              onLoad={() => setImgLoad(true)}
-              alt=""
-            />
-          </CardMedia>
+        <Link
+          to={`/product/${_id}`}
+          style={{ color: 'inherit', textDecoration: 'none' }}
+        >
+          <CardActionArea>
+            {!imgLoad && <Skeleton className={classes.image} variant="rect" />}
+            <CardMedia>
+              <img
+                style={{ display: imgLoad ? 'block' : 'none ' }}
+                src="https://dong-xanh-restaurant.s3-ap-southeast-1.amazonaws.com/AllDishes/LauSuaDongXanh.jpg"
+                className={classes.image}
+                onLoad={() => setImgLoad(true)}
+                alt=""
+              />
+            </CardMedia>
 
-          <CardContent>
-            <Typography variant="h5" component="h2">
-              {name}
-            </Typography>
+            <CardContent>
+              <Typography variant="h5" component="h2">
+                {name}
+              </Typography>
 
-            <Typography variant="subtitle1" component="p">
-              {categoryString}
-            </Typography>
+              <Typography variant="subtitle1" component="p">
+                {categoryString}
+              </Typography>
 
-            <Typography variant="body1" color="textSecondary" component="p">
-              {description}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
+              <Typography variant="body1" color="textSecondary" component="p">
+                {description
+                  ? description?.length > 200
+                    ? description?.slice(0, 200) + '...'
+                    : description
+                  : null}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Link>
         <CardActions
           className={classes.buttonContainer}
           onClick={onAddItemHandler}

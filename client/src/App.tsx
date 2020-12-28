@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 
 import CartDrawer from './Components/CartDrawer'
 import Navbar from './Components/Navbar'
-import { firstFetch } from './redux/actions'
+import { retrieveStorageAndSetCart } from './redux/actions'
 import Routes from './Routes'
 import customTheme from './theme'
 
@@ -19,12 +19,9 @@ export default function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(firstFetch())
+    dispatch(retrieveStorageAndSetCart())
   }, [dispatch])
 
-  useEffect(() => {
-    console.log(process.env)
-  })
   return (
     <>
       <ThemeProvider theme={theme}>

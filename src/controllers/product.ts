@@ -35,8 +35,7 @@ export const getProductById = async (
 ) => {
   try {
     const { productId } = req.params
-    const product = await Product.findById(productId)
-    console.log(product)
+    const product = await Product.findById(productId).populate('category')
     res.status(200).json(product)
   } catch (err) {
     next(productService.errorHandler(err))

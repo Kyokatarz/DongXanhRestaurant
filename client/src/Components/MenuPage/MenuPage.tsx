@@ -1,10 +1,12 @@
-import { makeStyles, Theme, createStyles, Container } from '@material-ui/core'
-import React from 'react'
+import { makeStyles, createStyles, Container } from '@material-ui/core'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { firstFetch } from '../../redux/actions'
 
 import HeroImage from '../HeroImage'
 import ProductContainer from '../ProductContainer'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     bodyContainer: {
       marginTop: 65,
@@ -20,6 +22,11 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const MenuPage = () => {
   const classes = useStyles()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(firstFetch())
+  }, [dispatch])
 
   return (
     <Container className={classes.bodyContainer}>
