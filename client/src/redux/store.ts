@@ -17,6 +17,11 @@ const initState: RootState = {
   cart: {
     inCart: [],
   },
+  user: {
+    isLoggedIn: false,
+    isAdmin: true,
+    token: '',
+  },
 }
 
 export default function makeStore(initialState = initState) {

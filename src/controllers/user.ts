@@ -35,8 +35,8 @@ export const signUserIn = async (
   const errors = validationResult(req)
   try {
     if (!errors.isEmpty()) throw 'ValidationError'
-    const token = await userService.signUserIn(req.body)
-    res.status(200).json({ token })
+    const user = await userService.signUserIn(req.body)
+    res.status(200).json({ user })
   } catch (err) {
     next(userService.errorHandler(err, errors))
   }

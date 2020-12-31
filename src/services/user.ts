@@ -39,7 +39,7 @@ export const registerUser = async (userObj: UserDocument): Promise<string> => {
  +============*/
 export const signUserIn = async (
   userObj: Partial<UserDocument>
-): Promise<string> => {
+): Promise<{ token: string; email: string; isAdmin: boolean }> => {
   const { email, password } = userObj
   const user = await User.findOne({ email }).exec()
   if (!user) throw 'CredentialError'
@@ -48,7 +48,7 @@ export const signUserIn = async (
   if (!pwdMatch) throw 'CredentialError'
 
   const token = createJwt({ user: { _id: user._id } })
-  return token
+  return { token, email: user.email, isAdmin: user.isAdmin }
 }
 
 /*=============+

@@ -9,6 +9,8 @@ export const UPDATE_CART = 'UPDATE_CART'
 export const TOGGLE_ALL_ITEMS_LOADING = 'TOGGLE_ALL_ITEMS_LOADING'
 export const TOGGLE_CART_DRAWER = 'TOGGLE_CART_DRAWER'
 
+export const LOG_USER_IN = 'LOG_USER_IN'
+
 // Enum
 export enum DialogType {
   SignIn = 'signIn',
@@ -71,6 +73,14 @@ export type ToggleCartDrawerAction = {
   type: typeof TOGGLE_CART_DRAWER
 }
 
+//User actions
+export type LogUserInAction = {
+  type: typeof LOG_USER_IN
+  payload: UserState
+}
+
+export type UserActions = LogUserInAction
+
 // Use this union in reducer
 export type ProductActions =
   | AddAllProductsAction
@@ -95,8 +105,15 @@ export type UiState = {
   cartDrawer: boolean
 }
 
+export type UserState = {
+  isLoggedIn: boolean
+  isAdmin: boolean
+  token: string
+}
+
 export type RootState = {
   product: ProductState
   ui: UiState
   cart: CartState
+  user: UserState
 }

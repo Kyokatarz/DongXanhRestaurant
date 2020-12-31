@@ -1,6 +1,8 @@
 import { createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import CartDrawer from './Components/CartDrawer'
 import Navbar from './Components/Navbar'
@@ -29,6 +31,7 @@ export default function App() {
         <Navbar />
         <Routes />
         <CartDrawer />
+        <ToastContainer />
       </ThemeProvider>
     </>
   )
